@@ -140,7 +140,7 @@ class MysqlSchemaParser extends AbstractSchemaParser
             $name = $row[0];
             $type = $row[1];
 
-            if ($name == $this->getMigrationTable() || $type !== 'BASE TABLE') {
+            if ($name == $this->getMigrationTable() || !in_array($type, array("BASE TABLE", "VIEW"))) {
                 continue;
             }
 
